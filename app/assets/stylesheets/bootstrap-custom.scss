@@ -1,0 +1,18 @@
+.nav>li>a:hover, .nav>li>a:focus {
+  background-color: transparent;
+}
+.dropdown-menuli>a:hover, .dropdown-menu>li>a:focus {
+  background-color: transparent;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: transparent;
+}
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0px;
+  }
+}
+
+body {
+  font-size: 16px;
+}

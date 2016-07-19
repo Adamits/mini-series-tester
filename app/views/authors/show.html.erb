@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="user">
+    <h2>
+      <%= @user.username %>
+    </h2>
+    <div class="bio">
+      <%= @user.bio %>
+    </div>
+    <h4>
+      <%= @user.username %>'s Projects
+    </h4>
+    <div class="projects">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Title
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Published Compositions
+            </th>
+            <th>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.projects.each do |project| %>
+            <tr>
+              <td>
+                <%= project.title %>
+              </td>
+              <td>
+                <%= project.description %>
+              </td>
+              <td>
+                <%= project.published_compositions_count %>
+              </td>
+              <td>
+                <%= link_to "view", project_path(project) %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

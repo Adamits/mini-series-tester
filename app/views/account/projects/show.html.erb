@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>
+    <%= @project.title %>
+  </h2>
+  <%= link_to account_settings_path do %>
+    <i class="fa fa-caret-left"></i> back
+  <% end %>
+  |
+  <%= link_to "edit", edit_account_project_path(@project) %>
+  <div class="row form-group">
+    <div class="col-sm-9">
+      <i><%= @project.description %></i>
+    </div>
+  </div>
+  <div style="display: inline-block;">
+    <h4>
+      <%= "#{@project.collaborative? ? 'My' : ''}" %> Compositions
+    </h4>
+  </div>
+  <div class="modal-tooltip" data-toggle="modal" data-target="#composition-explanation-modal" style="display: inline-block;">
+    What the heck is a composition?
+  </div>
+  <%= render partial: "compositions_table", locals: { compositions: @project.my_compositions(current_user) } %>
+  <div>
+    <%= link_to "Add new composition", new_account_project_composition_path(@project) %>
+  </div>
+  <% if @project.collaborative? %>
+    <h4>
+      Collaborations
+    </h4>
+    <% if @project.collaborative_compositions(current_user).any? %>
+      <%= render partial: "compositions_table", locals: { compositions: @project.collaborative_compositions(current_user) } %>
+      <% else %>
+        No one has submitted a collaborative composition to this project yet!
+      <% end %>
+  <% end %>
+</div>
+<div id="composition-explanation-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">What the heck is a composition?</h4>
+      </div>
+      <div class="modal-body">
+        A composition is a piece of a project - a chapter, a passage, a fragment, a thought - that you think someone may want to read, and that could be part of a larger project. Publish compositions that you'd like feedback on, and release them in an order such that readers can let you know if they'd like to keep reading! If that is the case, we will let you know, and we'll set a deadline for your next composition in the project!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

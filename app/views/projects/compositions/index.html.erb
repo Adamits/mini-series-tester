@@ -1,0 +1,15 @@
+<div class="container">
+  <% @compositions.each do |composition| %>
+    <div class="composition">
+      <h4>
+        <%= composition.title %>
+      </h4>
+      <div class="author">
+        By <%= link_to composition.user.username, author_path(composition.user) %>
+      </div>
+      <div class="description">
+        <%= composition.description %>
+      </div>
+    </div>
+  <% end %>
+</div>

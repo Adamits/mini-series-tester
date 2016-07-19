@@ -1,0 +1,35 @@
+<%= form_for [:account, @project, @composition] do |f| %>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label :title %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label :description %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label :content %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_area :content, data: { provide: "markdown", iconlibrary: "fa", height: "300" }, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label "Published?" %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.check_box :published %>
+    </div>
+  </div>
+  <%= f.submit "#{ @composition.persisted? ? 'Update' : 'Create' }", class: "btn #{ @composition.persisted? ? 'btn-success' : 'btn-primary' }" %>
+<% end %>

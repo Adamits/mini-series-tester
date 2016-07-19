@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="project">
+    <h2>
+      <%= @project.title %>
+    </h2>
+    <div class="author">
+      By <%= link_to @project.user.username, author_path(@project.user) %>
+    </div>
+    <div class="description">
+      <i><%= @project.description %></i>
+    </div>
+    <h4>
+      Compositions
+    </h4>
+    <div class="compositions">
+      <%= render partial: "compositions_table", locals: {compositions: @project.compositions.where(published: true)} %>
+    </div>
+  </div>
+</div>

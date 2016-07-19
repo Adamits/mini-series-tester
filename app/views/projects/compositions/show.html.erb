@@ -1,0 +1,21 @@
+<div class="container composition-container">
+  <div class="composition">
+    <h2>
+      <%= @composition.title %>
+    </h2>
+    <span class="author">
+      <i>By</i> <%= link_to @composition.user.username, author_path(@composition.user) %>
+    </span>
+    <span> | </span>
+    <span class="project">
+      <i>Part of</i> <%= link_to @composition.project.title, project_path(@composition.project) %>
+    </span>
+    </div>
+    <div class="description">
+      <i><%= @composition.description %></i>
+    </div>
+    <div class="content">
+      <%= markdown(@composition.content) %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>
+    <%= @composition.title %>
+  </h2>
+  <%= link_to account_project_path(@project) do %>
+    <i class="fa fa-caret-left"></i> back
+  <% end %>
+  |
+  <%= link_to "edit", edit_account_project_composition_path(@project, @composition) %>
+  <div class="row form-group">
+    <div class="col-sm-9">
+      <i><%= @composition.description %></i>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-9">
+      <%= markdown(@composition.content) %>
+    </div>
+  </div>
+</div>

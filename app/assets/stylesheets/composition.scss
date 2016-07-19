@@ -1,0 +1,15 @@
+.composition-container {
+  @media (min-width: $screen-xs-max) {
+    padding: 0px 100px;
+  }
+
+  .content {
+    margin-top: 20px;
+  }
+}
+
+.compositions-container {
+  .composition + .composition {
+    margin-top: 20px;
+  }
+}

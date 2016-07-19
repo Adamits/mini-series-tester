@@ -1,0 +1,27 @@
+<%= form_for [:account, @project] do |f| %>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label :title %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label :description %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <%= f.label "Collaborative?" %>
+    </div>
+    <div class="col-sm-9">
+      <%= f.check_box :collaborative %>
+    </div>
+  </div>
+  <%= f.submit "#{ @project.persisted? ? 'Update' : 'Create' }", class: "btn #{ @project.persisted? ? 'btn-success' : 'btn-primary' }" %>
+<% end %>

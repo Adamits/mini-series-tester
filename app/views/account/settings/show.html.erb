@@ -1,0 +1,89 @@
+<div class="container">
+  <h2>
+    Howdy <%= current_user.username %>!
+  </h2>
+  <%= link_to "edit my settings", edit_user_registration_path %>
+  <div>
+    <% if current_user.avatar %>
+      <%= image_tag current_user.avatar.url, class: "user-icon" %>
+    <% else %>
+      None
+    <% end %>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <b>Email</b>
+    </div>
+    <div class="col-sm-9">
+      <%= current_user.email %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-3">
+      <b>Bio</b>
+    </div>
+    <div class="col-sm-9">
+      <%= current_user.bio %>
+    </div>
+  </div>
+  <div style="display: inline-block;">
+    <h4>
+      My Projects
+    </h4>
+  </div>
+  <div class="modal-tooltip" data-toggle="modal" data-target="#project-explanation-modal" style="display: inline-block;">
+    What the heck is a project?
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          Title
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Compositions
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.projects.each do |project| %>
+        <tr>
+          <td>
+            <%= project.title %>
+          </td>
+          <td>
+            <%= project.description %>
+          </td>
+          <td>
+            <%= project.compositions_count %>
+          </td>
+          <td>
+            <%= link_to "view", account_project_path(project) %>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  <%= link_to "Create a new project", new_account_project_path %>
+</div>
+<div id="project-explanation-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">What the heck is a project?</h4>
+      </div>
+      <div class="modal-body">
+        A project is a collection of compositions - stories, fragments, chapters, thoughts - that can each be read as standalone pieces or as part of an entire project. Start a project and begin publishing compositions to see who is enjoying reading it. Then we can help you form a plan to keep releasing pieces of your project to the public eye!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
