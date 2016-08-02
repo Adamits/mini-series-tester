@@ -1,4 +1,4 @@
-class Account::Projects::CompositionsController < ApplicationController
+class Account::Writer::Projects::CompositionsController < AccountController
   before_action :authorize_project
 
   def index
@@ -16,7 +16,7 @@ class Account::Projects::CompositionsController < ApplicationController
   def update
     @composition = @project.compositions.where(id: params[:id]).last
     if @composition.update_attributes(composition_params)
-      redirect_to account_project_path(@project)
+      redirect_to account_writer_project_path(@project)
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Account::Projects::CompositionsController < ApplicationController
     @composition = @project.compositions.build(composition_params)
     @composition.user = current_user
     if @composition.save
-      redirect_to account_project_path(@project)
+      redirect_to account_writer_project_path(@project)
     else
       render :new
     end

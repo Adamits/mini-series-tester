@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render "shared/head" %>
+</head>
+<body>
+  <%= render "shared/navigation" %>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <%= render "account/menu" %>
+        </div>
+        <div class="col-sm-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div class="menu">
+  <%= link_to account_settings_path do %>
+    <div class="menu-item<%= " active" if @account_navigation == "settings" %>">
+      Settings
+    </div>
+  <% end %>
+  <% if current_user.reader? %>
+    <%= link_to account_reader_path do %>
+      <div class="menu-item<%= " active" if @account_navigation == "reader" %>">
+        Reader
+      </div>
+    <% end %>
+  <% end %>
+  <% if current_user.writer? %>
+    <%= link_to account_writer_path do %>
+      <div class="menu-item<%= " active" if @account_navigation == "writer" %>">
+        Writer
+      </div>
+    <% end %>
+  <% end %>
+</div>

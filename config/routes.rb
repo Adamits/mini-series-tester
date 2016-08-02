@@ -4,9 +4,17 @@ Rails.application.routes.draw do
   resources :authors, only: [:index, :show]
 
   namespace :account do
-    resource :settings, only: [:show]
-    resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
-      resources :compositions, controller: 'projects/compositions', only: [:index, :show, :new, :create, :edit, :update]
+    resource :settings, only: [:show] do
+      member do
+        post :make_reader
+        post :make_writer
+      end
+    end
+    resource :reader, only: [:show]
+    resource :writer, only: [:show] do
+      resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
+        resources :compositions, controller: 'writer/projects/compositions', only: [:index, :show, :new, :create, :edit, :update]
+      end
     end
   end
 

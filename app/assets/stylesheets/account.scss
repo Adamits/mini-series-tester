@@ -1,0 +1,18 @@
+.menu {
+  margin-top: 20px;
+
+  a {
+    text-decoration: none;
+
+    .menu-item {
+      background: #FFFFFF;
+      font-size: 16px;
+      padding: 5px 10px;
+
+      &.active {
+        background-color: #F8F8F8;
+        border: solid 1px #E7E7E7;
+      }
+    }
+  }
+}

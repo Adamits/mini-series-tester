@@ -1,4 +1,4 @@
-class Account::ProjectsController < ApplicationController
+class Account::Writer::ProjectsController < AccountController
 
   def index
 
