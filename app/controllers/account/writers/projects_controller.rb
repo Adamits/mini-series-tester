@@ -1,4 +1,4 @@
-class Account::Writer::ProjectsController < AccountController
+class Account::Writers::ProjectsController < AccountController
 
   def index
 
@@ -15,7 +15,7 @@ class Account::Writer::ProjectsController < AccountController
   def update
     @project = current_user.projects.where(id: params[:id]).last
     if @project.update_attributes(project_params)
-      redirect_to account_settings_path
+      redirect_to account_writer_path
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class Account::Writer::ProjectsController < AccountController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      redirect_to account_settings_path
+      redirect_to account_writer_path
     else
       render :new
     end

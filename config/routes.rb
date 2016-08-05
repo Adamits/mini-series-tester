@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     end
     resource :reader, only: [:show]
     resource :writer, only: [:show] do
-      resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
-        resources :compositions, controller: 'writer/projects/compositions', only: [:index, :show, :new, :create, :edit, :update]
+      resources :projects, controller: "writers/projects", only: [:index, :show, :new, :create, :edit, :update] do
+        resources :compositions, controller: 'writers/projects/compositions', only: [:index, :show, :new, :create, :edit, :update]
       end
     end
   end

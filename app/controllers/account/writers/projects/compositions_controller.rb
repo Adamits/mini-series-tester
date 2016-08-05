@@ -1,4 +1,4 @@
-class Account::Writer::Projects::CompositionsController < AccountController
+class Account::Writers::Projects::CompositionsController < AccountController
   before_action :authorize_project
 
   def index
