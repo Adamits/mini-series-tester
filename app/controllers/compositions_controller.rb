@@ -1,6 +1,6 @@
 class CompositionsController < ApplicationController
 
   def index
-    @compositions = Composition.all
+    @compositions = Composition.published
   end
 end

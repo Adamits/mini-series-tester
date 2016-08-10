@@ -41,7 +41,7 @@
       </div>
     <% else %>
       <div class="pull-right continue-reading">
-        <%= link_to continue_reading_project_composition_path(@project, @composition) do %>
+        <%= link_to project_composition_path(@project, @composition.next || @composition) do %>
           Continue Reading <i class="fa fa-caret-right"></i>
         <% end %>
       </div>

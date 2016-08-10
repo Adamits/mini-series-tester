@@ -26,7 +26,7 @@
         <td>
           <%= composition.published? ? "Yes" : "No" %>
         <td>
-          <%= link_to "view", project_composition_path(@project, composition) %>
+          <%= link_to "edit", edit_account_writer_project_composition_path(@project, composition) %>
         </td>
       </tr>
     </tbody>
