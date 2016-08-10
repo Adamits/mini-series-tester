@@ -3,6 +3,13 @@
     <h2>
       <%= @composition.title %>
     </h2>
+    <% if @composition.errors.any? %>
+      <div class="alert alert-danger">
+        <% @composition.errors.each do |error| %>
+          <%= error %>
+        <% end %>
+      </div>
+    <% end %>
     <span class="author">
       <i>By</i> <%= link_to @composition.user.username, author_path(@composition.user) %>
     </span>
@@ -17,5 +24,27 @@
     <div class="content">
       <%= markdown(@composition.content) %>
     </div>
+    <% if @composition.most_recent_in_project? %>
+      <div class="pull-right would-keep-reading">
+        <span>
+          <% if current_user.can_cast_vote_type_on?("Vote::WouldKeepReading", @composition) %>
+            <%= link_to would_keep_reading_project_composition_path(@project, @composition), method: :post do %>
+              <i class="fa fa-eye"></i>
+            <% end %>
+            <span class="would-keep-reading-message">
+              Want more from this project? Let <%= @composition.user.username %> know!
+            </span>
+          <% elsif current_user.has_voted_on?(@composition) %>
+            <i class="fa fa-eye"></i> <span class="would-keep-reading-message">You would keep reading this!</span>
+          <% end %>
+        </span>
+      </div>
+    <% else %>
+      <div class="pull-right continue-reading">
+        <%= link_to continue_reading_project_composition_path(@project, @composition) do %>
+          Continue Reading <i class="fa fa-caret-right"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [:index, :show] do
-    resources :compositions, controller: 'projects/compositions', only: [:index, :show]
+    resources :compositions, controller: 'projects/compositions', only: [:index, :show] do
+      member do
+        post :would_keep_reading
+      end
+    end
   end
 
   resources :compositions, only: [:index]

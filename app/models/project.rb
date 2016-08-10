@@ -14,4 +14,8 @@ class Project < ActiveRecord::Base
     compositions.where(published: true).count
   end
 
+  def most_recently_published_composition
+    compositions.where(published: true).order(updated_at: :desc).last
+  end
+
 end
