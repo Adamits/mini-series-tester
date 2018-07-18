@@ -1,4 +1,4 @@
-class Account::WritersController < AccountController
+class Account::ReadersController < AccountController
   before_action :account_navigation
 
   def show
@@ -8,8 +8,8 @@ class Account::WritersController < AccountController
   private
 
   def account_navigation
-    if current_user.writer?
-      @account_navigation = "writer"
+    if current_user.reader?
+      @account_navigation = "reader"
     else
       redirect_to root_path
     end
