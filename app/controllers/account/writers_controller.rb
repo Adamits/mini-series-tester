@@ -8,6 +8,10 @@ class Account::WritersController < AccountController
   private
 
   def account_navigation
-    @account_navigation = "writers"
+    if current_user.writer?
+      @account_navigation = "writers"
+    else
+      redirect_to root_path
+    end
   end
 end

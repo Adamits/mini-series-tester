@@ -15,3 +15,4 @@
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap-markdown-bundle
+//= require font_awesome5

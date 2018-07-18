@@ -4,24 +4,48 @@ a:hover {
 
 .homepage-container {
   .hook-box {
-    background-color: #007C8A;
-    color: #FFFFFF;
-    font-size: 18px;
-    margin-top: 80px;
-    padding: 40px 40px;
+    display: table;
+    font-size: 20px;
+    margin-top: 40px;
+    padding: 20px;
 
-    .call-to-action-buttons {
-      margin-top: 50px;
+    .hook {
+      display: table-cell;
+      float: none;
+      vertical-align: top;
 
-      .btn-primary {
-        background-color: #FFFFFF;
-        color: blue;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-        width: 400px;
+      h2 {
+        color: #007C8A;
+        text-align: center;
+      }
+
+      .icon {
+        font-size: 48px;
+        padding-right: 5px;
       }
     }
+
+    .hook + .hook {
+      border-left: 2px solid #007C8A;
+    }
+  }
+
+  .call-to-action-buttons {
+    margin-top: 50px;
+
+    .btn-primary {
+      background-color: #FFFFFF;
+      color: blue;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      width: 400px;
+    }
+  }
+
+  .note-from-creator {
+    margin-top: 85px;
+    padding: 50px;
   }
 }
