@@ -18,24 +18,24 @@
       <i>Part of</i> <%= link_to @composition.project.title, project_path(@composition.project) %>
     </span>
     </div>
-    <div class="description">
-      <i><%= @composition.description %></i>
-    </div>
     <div class="content">
       <%= markdown(@composition.content) %>
     </div>
     <% if @composition.most_recent_in_project? %>
       <div class="pull-right would-keep-reading">
         <span>
-          <% if current_user.can_cast_vote_type_on?("Vote::WouldKeepReading", @composition) %>
-            <%= link_to would_keep_reading_project_composition_path(@project, @composition), method: :post do %>
-              <i class="fa fa-eye"></i>
+          <% if current_user %>
+            <% if current_user.can_cast_vote_type_on?("Vote::WouldKeepReading", @composition) %>
+              <%= link_to would_keep_reading_project_composition_path(@project, @composition), method: :post do %>
+                <i class="fa fa-glasses" data-toggle="tooltip" title="Let <%= @composition.user.username %> know if you'd keep reading this!"></i>
+              <% end %>
+            <% elsif current_user.has_voted_on?(@composition) %>
+              <i class="fa fa-glasses"></i> <span class="would-keep-reading-message">You would keep reading this!</span>
             <% end %>
-            <span class="would-keep-reading-message">
-              Want more from this project? Let <%= @composition.user.username %> know!
-            </span>
-          <% elsif current_user.has_voted_on?(@composition) %>
-            <i class="fa fa-eye"></i> <span class="would-keep-reading-message">You would keep reading this!</span>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <i class="fa fa-glasses" data-toggle="tooltip" title="Let <%= @composition.user.username %> know if you'd keep reading this!"></i>
+            <% end %>
           <% end %>
         </span>
       </div>

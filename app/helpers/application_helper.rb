@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include CompositionHelper
   def markdown(text)
     options = {
       hard_wrap: true,

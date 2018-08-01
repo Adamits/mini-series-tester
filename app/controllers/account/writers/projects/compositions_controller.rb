@@ -1,5 +1,6 @@
 class Account::Writers::Projects::CompositionsController < AccountController
   before_action :authorize_project
+  before_action :account_navigation
 
   def index
 
@@ -47,5 +48,9 @@ class Account::Writers::Projects::CompositionsController < AccountController
 
   def composition_params
     params.require(:composition).permit(:title, :description, :content, :published)
+  end
+
+  def account_navigation
+    @account_navigation = "writer"
   end
 end

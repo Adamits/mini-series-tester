@@ -23,8 +23,12 @@
     </div>
   </div>
   <div class="call-to-action-buttons">
-    <%= link_to "I'm ready to start writing - sign me up!", new_user_registration_path, class: "btn btn-primary" %>
-    <%= link_to "I'm just here to read", compositions_path, class: "btn btn-primary" %>
+    <% if current_user %>
+      <div style="height:78px"></div>
+    <% else %>
+      <%= link_to "I'm ready to start writing - sign me up!", new_user_registration_path, class: "btn btn-primary" %>
+      <%= link_to "I'm just here to read", compositions_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="note-from-creator">
     <h3>

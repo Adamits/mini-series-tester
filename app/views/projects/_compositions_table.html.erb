@@ -2,6 +2,9 @@
   <thead>
     <tr>
       <th>
+        Order
+      </th>
+      <th>
         Title
       </th>
       <th>
@@ -17,6 +20,9 @@
   <tbody>
     <% compositions.each do |composition| %>
       <tr>
+        <td>
+          <%= composition.order %>
+        </td>
         <td>
           <%= composition.title %>
         </td>

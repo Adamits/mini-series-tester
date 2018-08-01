@@ -1,4 +1,5 @@
 class Account::Writers::ProjectsController < AccountController
+  before_action :account_navigation
 
   def index
 
@@ -37,5 +38,9 @@ class Account::Writers::ProjectsController < AccountController
   private
   def project_params
     params.require(:project).permit(:title, :description, :collaborative)
+  end
+
+  def account_navigation
+    @account_navigation = "writer"
   end
 end

@@ -1,11 +1,11 @@
-<h2>
-  <%= @project.title %>
-</h2>
-<%= link_to account_settings_path do %>
+<%= link_to account_writer_path do %>
   <i class="fa fa-caret-left"></i> back
 <% end %>
 |
 <%= link_to "edit", edit_account_writer_project_path(@project) %>
+<h2>
+  <%= @project.title %>
+</h2>
 <div class="row form-group">
   <div class="col-sm-9">
     <i><%= @project.description %></i>

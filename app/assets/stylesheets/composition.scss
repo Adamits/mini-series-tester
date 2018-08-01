@@ -9,14 +9,40 @@
 }
 
 .compositions-container {
-  .composition + .composition {
+  .compositions-row + .compositions-row {
     margin-top: 20px;
+  }
+
+  .compositions-row {
+
+    .composition-col + .composition-col {
+      border-left: none;
+    }
+
+    .composition-col {
+
+      .composition {
+        border: 2px solid #ddd;
+        height: 180px;
+        padding: 16px;
+
+        .author {
+
+        }
+
+        .content {
+          font-size: 12px;
+          margin-top: 14px;
+        }
+      }
+    }
   }
 }
 
 .would-keep-reading {
 
   .would-keep-reading-message {
+    display: none;
     font-size: 12px;
     font-style: italic;
   }
